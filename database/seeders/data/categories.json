@@ -1,0 +1,7 @@
+[
+    { "name": "Engine Oils", "description": "Lubricants for engine performance" },
+    { "name": "Brake Fluids", "description": "Fluids for brake systems" },
+    { "name": "Car Batteries", "description": "Automotive batteries for vehicles" },
+    { "name": "Tires", "description": "Vehicle tires for all types of cars" },
+    { "name": "Car Accessories", "description": "Various car accessories and parts" }
+]
