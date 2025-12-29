@@ -2,6 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\V1\AuthController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,18 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::prefix('v1')->group(function () {
-    // backend routes will live here
-});
+    // Auth routes with rate limiting
+    Route::middleware('throttle:5,1')->group(function () {
+        Route::post('/auth/login', [AuthController::class, 'login']);
+    });
 
+    // Password reset (public)
+    Route::post('/auth/password/forgot', [AuthController::class, 'forgotPassword']);
+    Route::post('/auth/password/reset', [AuthController::class, 'resetPassword']);
+
+    Route::middleware('auth:sanctum')->group(function () {
+        Route::post('/auth/logout', [AuthController::class, 'logout']);
+        Route::get('/auth/user', [AuthController::class, 'user']);
+        Route::post('/auth/refresh', [AuthController::class, 'refresh']);
+    });
+});
