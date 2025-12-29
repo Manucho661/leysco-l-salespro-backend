@@ -17,6 +17,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained()->onDelete('cascade');
             $table->foreignId('warehouse_id')->constrained()->onDelete('cascade');
             $table->integer('quantity');
+            $table->enum('status', ['reserved', 'released', 'consumed']);
             $table->timestamp('expires_at'); // auto-release after 30 mins
             $table->timestamps();
         });

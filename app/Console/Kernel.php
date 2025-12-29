@@ -12,7 +12,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        // Run every 5 minutes to release expired stock reservations
+        $schedule->command('inventory:release-expired')->everyFiveMinutes();
     }
 
     /**

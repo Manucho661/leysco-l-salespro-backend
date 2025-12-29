@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique(); // ensures no duplicate emails
             $table->string('password'); // hashed passwords
-            $table->enum('role', ['Sales Manager', 'Sales Representative']); // two user types only
+            $table->enum('role', ['Sales Manager', 'Sales Representative']); 
             $table->json('permissions')->nullable(); // allows flexible permissions storage
             $table->enum('status', ['active', 'inactive'])->default('active'); // user status
             $table->timestamps(); // created_at and updated_at
