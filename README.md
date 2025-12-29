@@ -1,66 +1,160 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# L-SalesPro API Backend
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+**Project:** L-SalesPro – Sales Automation Portal  
+**Framework:** Laravel 10  
+**Author:** Emmanuel Wanyonyi  
+**Confidential:** LEYSCO-LARAVEL-2025-06  
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Table of Contents
+1. [Overview](#overview)  
+2. [Requirements](#requirements)  
+3. [Installation](#installation)  
+4. [Configuration](#configuration)  
+5. [Database Setup](#database-setup)  
+6. [API Endpoints](#api-endpoints)  
+7. [Testing](#testing)  
+8. [Seed Data](#seed-data)  
+9. [Notes](#notes)
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+---
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Overview
 
-## Learning Laravel
+L-SalesPro is a backend API for a sales automation system. It provides endpoints for:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+- Authentication & Authorization
+- Inventory Management
+- Product Management
+- Sales Order Management
+- Customer Management
+- Warehouse Management
+- Notifications
+- Dashboard Analytics
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+This project implements a RESTful API using Laravel 10, with token-based authentication via **Laravel Sanctum**.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+---
 
-## Laravel Sponsors
+## Requirements
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+- PHP >= 8.1  
+- Composer  
+- MySQL or PostgreSQL  
+- Redis (for caching)  
+- Node.js & NPM (optional for frontend tools)  
+- Postman (for API testing)  
 
-### Premium Partners
+---
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+## Installation
 
-## Contributing
+1. Clone the repository:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```bash
+git clone https://github.com/yourusername/leysco-l-salespro-backend.git
+cd leysco-l-salespro-backend
 
-## Code of Conduct
+2. Install dependencies:
+composer install
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+3. Copy the example environment file:
+cp .env.example .env
 
-## Security Vulnerabilities
+4. Generate application key:
+php artisan key:generate
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+5. Run migrations:
+php artisan migrate
 
-## License
+6. php artisan db:seed
+php artisan db:seed
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+7. Start the local server:
+php artisan serve
+
+## Configuration
+
+Update .env file with:
+APP_NAME=L-SalesPro
+APP_ENV=local
+APP_KEY=base64:...
+APP_DEBUG=true
+APP_URL=http://127.0.0.1:8000
+
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=leysco
+DB_USERNAME=root
+DB_PASSWORD=
+
+CACHE_DRIVER=redis
+QUEUE_CONNECTION=database
+
+# Database Setup
+users – user accounts and roles
+
+products – products catalog
+
+categories – product categories
+
+customers – customer details
+
+orders & order_items – orders and their items
+
+warehouses – warehouses for stock tracking
+
+inventory – stock per warehouse
+
+stock_reservations – reserved stock for orders
+
+notifications – user notifications
+
+activity_logs – API activity tracking
+
+# API Endpoints
+Authentication
+Endpoint	                    Method	    Description
+/api/v1/auth/login	            POST	    Login
+/api/v1/auth/logout	            POST	    Logout
+/api/v1/auth/user	            GET	        Current user profile
+/api/v1/auth/password/forgot	POST	    Password reset request
+/api/v1/auth/password/reset	    POST	    Reset password
+
+Orders
+Endpoint	                    Method	    Description
+/api/v1/orders	                GET	        List orders with optional filters
+/api/v1/orders	                POST	    Create a new order
+/api/v1/orders/{id}	            GET	        Show order details
+/api/v1/orders/{id}/status	    PUT	        Update order status
+/api/v1/orders/{id}/invoice	    GET	        Generate invoice
+/api/v1/orders/calculate-total	POST	    Preview order totals
+
+Products
+Endpoint	                    Method	    Description
+/api/v1/products	            GET	        List products
+/api/v1/products/{id}	        GET	        Product details
+/api/v1/products	            POST	    Create      product (Admin only)
+/api/v1/products/{id}	        PUT	        Update product
+/api/v1/products/{id}	        DELETE	    Soft delete product
+
+# Other tables follow the similar structure
+
+Seed Data
+
+Seeders use JSON files stored in database/data/:
+
+users.json
+
+products.json
+
+customers.json
+
+warehouses.json
+
+orders.json
+
+To seed the database:
+php artisan db:s

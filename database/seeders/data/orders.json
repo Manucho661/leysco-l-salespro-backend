@@ -1,0 +1,34 @@
+[
+    {
+        "customer_email": "info@quickautoservices.co.ke",
+        "customer_id": 1,
+        "order_number": "ORD-2025-12-001",
+        "status": "pending",
+        "total_amount": 4500.00,
+        "tax": 720.00,
+        "discount": 0,
+        "products": [
+            {
+                "sku": "SF-MAX-20W50",
+                "quantity": 1,
+                "price": 4500.00
+            }
+        ]
+    },
+    {
+        "customer_email": "sarah.w@premiummotors.co.ke",
+        "customer_id": 2,
+        "order_number": "ORD-2025-12-002",
+        "status": "confirmed",
+        "total_amount": 7200.00,
+        "tax": 1152.00,
+        "discount": 0,
+        "products": [
+            {
+                "sku": "ED-SYN-5W30",
+                "quantity": 1,
+                "price": 7200.00
+            }
+        ]
+    }
+]

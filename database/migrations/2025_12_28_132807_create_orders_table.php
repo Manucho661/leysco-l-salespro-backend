@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('order_number')->unique(); // ORD-YYYY-MM-XXX
             $table->foreignId('customer_id')->constrained()->onDelete('cascade');
-            $table->foreignId('sales_rep_id')->constrained('users')->onDelete('cascade'); // Sales rep who created order
             $table->decimal('total_amount', 15, 2);
             $table->decimal('discount', 15, 2)->default(0);
             $table->decimal('tax_amount', 15, 2)->default(0);
